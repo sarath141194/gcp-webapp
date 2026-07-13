@@ -1,20 +1,20 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: webapp-deployment
+  name: smart-walk-deployment
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: webapp
+      app: smart-walk
   template:
     metadata:
       labels:
-        app: webapp
+        app: smart-walk
     spec:
       containers:
-      - name: webapp
-        image: us-central1-docker.pkg.dev/qwiklabs-gcp-00-2ad8e3085b3b/test-repository/webapp:latest
+      - name: smart-walk
+        image: us-central1-docker.pkg.dev/qwiklabs-gcp-03-1051d07ccf83/smart-walk-repository/smart-walk:latest
         ports:
         - containerPort: 8080
         
