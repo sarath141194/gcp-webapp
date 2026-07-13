@@ -1,16 +1,16 @@
 steps:
   # Building a Docker image for the web UI application
   - name: 'gcr.io/cloud-builders/docker'
-    args: ['build', '-t', 'us-central1-docker.pkg.dev/qwiklabs-gcp-00-2ad8e3085b3b/test-repository/webapp', './webapp']
+    args: ['build', '-t', 'us-central1-docker.pkg.dev/qwiklabs-gcp-03-1051d07ccf83/smart-walk-repository/smart-walk', './webapp']
     
   # Pushing the Docker image to the Artifact Registry
   - name: 'gcr.io/cloud-builders/docker'
-    args: ['push', 'us-central1-docker.pkg.dev/qwiklabs-gcp-00-2ad8e3085b3b/test-repository/webapp']
-    id: 'Push WebApp Image to Test Registry'
+    args: ['push', 'us-central1-docker.pkg.dev/qwiklabs-gcp-03-1051d07ccf83/smart-walk-repository/smart-walk']
+    id: 'Push Smart Walk Image to Registry'
 
   # Obtaining credentials for GKE
   - name: 'gcr.io/cloud-builders/gcloud'
-    args: ['container', 'clusters', 'get-credentials', 'test-cluster', '--region', 'us-central1', '--project', '$PROJECT_ID']
+    args: ['container', 'clusters', 'get-credentials', 'smart-walk-cluster', '--region', 'us-central1', '--project', '$PROJECT_ID']
 
   # Deploying the application in GKE
   - name: 'google/cloud-sdk'
