@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: webapp-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: webapp
+  template:
+    metadata:
+      labels:
+        app: webapp
+    spec:
+      containers:
+      - name: webapp
+        image: us-central1-docker.pkg.dev/qwiklabs-gcp-00-2ad8e3085b3b/test-repository/webapp:latest
+        ports:
+        - containerPort: 8080
+        
